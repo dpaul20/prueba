@@ -11,7 +11,7 @@
                          @csrf
                         <div class="header header-primary text-center">
                             <h4>Inicio de sesión</h4>
-                            <div class="social-line">
+                            {{-- <div class="social-line">
                                 <a href="#pablo" class="btn btn-simple btn-just-icon">
                                     <i class="fa fa-facebook-square"></i>
                                 </a>
@@ -21,9 +21,9 @@
                                 <a href="#pablo" class="btn btn-simple btn-just-icon">
                                     <i class="fa fa-google-plus"></i>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
-                        <p class="text-divider">Or Be Classical</p>
+                        {{-- <p class="text-divider">Or Be Classical</p> --}}
                         <div class="content">
 
                             <div class="input-group">
