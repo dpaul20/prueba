@@ -19,10 +19,12 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->text('long_descripction')->nullable();
             $table->float('price');
-            
+            /**
+             * Clave foranea Categorias
+             */
             $table->unsignedBigInteger('category_id')->nullable();
-
             $table->foreign('category_id')->references('id')->on('categories');
+
             $table->timestamps();
         });
     }

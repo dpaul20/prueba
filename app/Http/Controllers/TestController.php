@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class TestController extends Controller
 {
     public function index()
     {
-    	return view('welcome');
+    	$products = Product::all();
+    	//dd($products[100]->productImage());
+    	return view('welcome')->with(compact('products'));
     }
 }

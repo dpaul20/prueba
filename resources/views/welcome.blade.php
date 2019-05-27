@@ -1,71 +1,173 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('title', 'Bienvenido a Prueba')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@section('body-clase', 'landing-page')
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+@section('content')
+    <div class="wrapper">
+        <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="title">Bienvenido a Pueba</h1>
+                        <h4>Realiza tu pedido y te contactaremos para realizar la entrega.</h4>
+                        <br />
+                        <a href="#" class="btn btn-danger btn-raised btn-lg">
+                            <i class="fa fa-play"></i> ¿Cómo funciona?
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            .full-height {
-                height: 100vh;
-            }
+        <div class="main main-raised">
+            <div class="container">
+                <div class="section text-center section-landing">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="title">¿Por qué prueba test?</h2>
+                            <h5 class="description">Puedes revisar nuestra relación completa de productos, compra precios y realiza tus pedidos cuando quieras.</h5>
+                        </div>
+                    </div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+                    <div class="features">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="info">
+                                    <div class="icon icon-primary">
+                                        <i class="material-icons">chat</i>
+                                    </div>
+                                    <h4 class="info-title">Atendemos tus dudas</h4>
+                                    <p>Atendemos rápidamente cualquier consulta que tengas via chat. No esta solo, sino que simepre estamos atentos a tus inquietudes.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info">
+                                    <div class="icon icon-success">
+                                        <i class="material-icons">verified_user</i>
+                                    </div>
+                                    <h4 class="info-title">Pagos Seguros</h4>
+                                    <p>Todos nuestros pagos son realmente seguros y son confirmados.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info">
+                                    <div class="icon icon-danger">
+                                        <i class="material-icons">fingerprint</i>
+                                    </div>
+                                    <h4 class="info-title">Información privada</h4>
+                                    <p>Los pedidos que realices solo los conoceras tú a través de tu panel de usuario. NAdie más tiene acceso a tú información.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            .position-ref {
-                position: relative;
-            }
+                <div class="section text-center">
+                    <h2 class="title">Nuestros productos</h2>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+                    <div class="team">
+                        <div class="row">
+                            @foreach ($products as $product)
+                                <div class="col-md-4">
+                                    <div class="team-player">
+    
+                                        <img src="{{ !empty($product->productImage()->first()) ? $product->productImage()->first()->image : asset('img/logo.png') }}" alt="{{ $product->name }}" class="img-raised img-circle">
+                                        <h4 class="title">{{ $product->name }} <br />
+                                            <small class="text-muted">{{ !empty($product->category->name) ? $product->category->name : 'General' }}</small>
+                                        </h4>
+                                        <p class="description">{{$product->description}}</p>
+                                      {{--   <a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
+                                        <a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-instagram"></i></a>
+                                        <a href="#" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-facebook-square"></i></a> --}}
+                                    </div>
+                                </div>
+                            @endforeach
+                            
+                            
+                        </div>
+                    </div>
 
-            .content {
-                text-align: center;
-            }
+                </div>
 
-            .title {
-                font-size: 84px;
-            }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+                <div class="section landing-section">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="text-center title">¿Alguna consulta?</h2>
+                            <h4 class="text-center description">Dejanos tus datos y estaremos en contacto contigo pronto.</h4>
+                            <form class="contact-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Tu nombre</label>
+                                            <input type="email" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Tu Correo electrónico</label>
+                                            <input type="email" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Tu mensaje</label>
+                                    <textarea class="form-control" rows="4"></textarea>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4 col-md-offset-4 text-center">
+                                        <button class="btn btn-primary btn-raised">
+                                            Enviar mensaje
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="http://www.creative-tim.com">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://presentation.creative-tim.com">
+                               About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                               Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.creative-tim.com/license">
+                                Licenses
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright pull-right">
+                    &copy; 2019, made with <i class="fa fa-heart heart"></i> by dPAUL
+                </div>
+            </div>
+        </footer>
+    </div>
+@endsection
+            {{-- @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
@@ -77,23 +179,5 @@
                         @endif
                     @endauth
                 </div>
-            @endif
+            @endif --}}
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
