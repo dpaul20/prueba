@@ -20,6 +20,10 @@ class CreateProductsTable extends Migration
             $table->text('long_descripction')->nullable();
             $table->float('price');
             /**
+             * Eliminacion logica con softDelete
+             */
+            $table->softDeletes();
+            /**
              * Clave foranea Categorias
              */
             $table->unsignedBigInteger('category_id')->nullable();

@@ -46,9 +46,13 @@
                                                 <a href="{{ asset('admin/products/'.$producto->id.'/edit') }}" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <button type="button" rel="tooltip" title="Eliminar" class="btn btn-danger btn-simple btn-xs">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
+                                                <form method="POST" action="{{ asset('admin/products/'.$producto->id.'/delete') }}" style="display: inline-block;"> 
+                                                    @csrf
+                                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </form>
+                                                
                                             </td>
                                         </tr>
                                     @endforeach
@@ -61,37 +65,7 @@
             </div>
         </div>
 
-        <footer class="footer">
-            <div class="container">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://presentation.creative-tim.com">
-                               About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                               Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                    &copy; 2019, made with <i class="fa fa-heart heart"></i> by dPAUL
-                </div>
-            </div>
-        </footer>
+        @include('includes.footer')
     </div>
 @endsection
             {{-- @if (Route::has('login'))

@@ -15,19 +15,28 @@
 
                 <div class="section">
                     <h2 class="title text-center">Editar producto</h2>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ asset('admin/products/'.$producto->id.'/edit') }}">
                         @csrf
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Nombre del producto</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $producto->name }}">
+                                    <input type="text" class="form-control" name="name" value="{{ old('name', $producto->name) }}">
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Precio</label>
-                                    <input type="number" step="0.01" class="form-control" name="price" value="{{ $producto->price }}">
+                                    <input type="number" step="0.01" class="form-control" name="price" value="{{ old('price', $producto->price) }}">
                                 </div>
                             </div>
                         </div>
@@ -36,14 +45,14 @@
                             <div class="col-sm-6">
                                  <div class="form-group label-floating">
                                     <label class="control-label">Descripción</label>
-                                    <input type="text" class="form-control" name="description" value="{{ $producto->description }}">
+                                    <input type="text" class="form-control" name="description" value="{{ old('description', $producto->description) }}">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <textarea class="form-control" placeholder="Descripción extensa del producto" rows="5" name="long_descripction">{{ $producto->long_descripction }}</textarea>
+                                <textarea class="form-control" placeholder="Descripción extensa del producto" rows="5" name="long_descripction">{{ old('long_descripction', $producto->long_descripction) }}</textarea>
                             </div>
                         </div>
 
@@ -58,37 +67,7 @@
 
         </div>
 
-        <footer class="footer">
-            <div class="container">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://presentation.creative-tim.com">
-                               About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                               Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                    &copy; 2019, made with <i class="fa fa-heart heart"></i> by dPAUL
-                </div>
-            </div>
-        </footer>
+        @include('includes.footer')
     </div>
 @endsection
             {{-- @if (Route::has('login'))

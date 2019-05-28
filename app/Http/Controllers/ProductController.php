@@ -36,7 +36,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //registrar el producto en la bd
+        /**
+         * Validar los datos del formulario
+         */
+        $rules = [
+            'name' => 'required|min:3',
+            'description' => 'required|max:200',
+            'price' => 'required|numeric|min:0'
+        ];
+        /**
+         * Mensaje a mostrar
+         */
+        $message = [
+            'name.required' => 'El campo nombre es obligatorío',
+            'name.min' => 'El campo nombre debe tener al menos 3 caracteres',
+            'description.required' => 'El campo descripción es obligatorío',
+            'description.max' => 'El máximo de caracteres permitido es 200',
+            'price.required' => 'El campo precio es obligatorío',
+            'price.numeric' => 'El campo precio numérico',
+            'price.min' => 'El campo precio no debe ser negativo'
+        ];
+        $this->validate($request, $rules, $message);
+        /**
+         * registrar el producto en la bd
+         */
         //dd($request->all());
         $producto = new Product();
         $producto->name = $request->input('name');
@@ -67,7 +90,7 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        //
+
         $producto= Product::find($product);
         return view('admin.products.edit')->with(compact('producto')); 
 
@@ -83,6 +106,27 @@ class ProductController extends Controller
     public function update(Request $request, $product)
     {
         //
+        /**
+         * Validar los datos del formulario
+         */
+        $rules = [
+            'name' => 'required|min:3',
+            'description' => 'required|max:200',
+            'price' => 'required|numeric|min:0'
+        ];
+        /**
+         * Mensaje a mostrar
+         */
+        $message = [
+            'name.required' => 'El campo nombre es obligatorío',
+            'name.min' => 'El campo nombre debe tener al menos 3 caracteres',
+            'description.required' => 'El campo descripción es obligatorío',
+            'description.max' => 'El máximo de caracteres permitido es 200',
+            'price.required' => 'El campo precio es obligatorío',
+            'price.numeric' => 'El campo precio numérico',
+            'price.min' => 'El campo precio no debe ser negativo'
+        ];
+        $this->validate($request, $rules, $message);
         $producto = Product::find($product);
         $producto->name = $request->input('name');
         $producto->price = $request->input('price');
@@ -98,8 +142,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product)
     {
         //
+        $producto = Product::find($product);
+        $producto->delete(); //DELETE
+        return back();
     }
 }
