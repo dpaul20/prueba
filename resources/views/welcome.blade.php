@@ -73,7 +73,7 @@
                                 <div class="col-md-4">
                                     <div class="team-player">
     
-                                        <img src="{{ !empty($product->productImage()->first()) ? $product->productImage()->first()->image : asset('img/logo.png') }}" alt="{{ $product->name }}" class="img-raised img-circle">
+                                        <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}" class="img-raised img-circle">
                                         <h4 class="title">{{ $product->name }} <br />
                                             <small class="text-muted">{{ !empty($product->category->name) ? $product->category->name : 'General' }}</small>
                                         </h4>

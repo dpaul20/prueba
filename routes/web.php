@@ -24,8 +24,12 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
 	Route::post('products','ProductController@store'); //Registrar
 	Route::get('products/{product}/edit','ProductController@edit'); //Editar
 	Route::post('products/{product}/edit','ProductController@update'); //Actualizar
-
 	Route::post('products/{product}/delete','ProductController@destroy'); //Eliminar
+
+	Route::get('products/{product}/images','ImageController@index'); //listado
+	Route::post('products/{product}/images','ImageController@store'); //Registrar
+	Route::delete('products/{product}/images','ImageController@destroy'); //Eliminar
+	Route::get('products/{product}/images/select/{image}','ImageController@select'); //Favorito
 });
 
 

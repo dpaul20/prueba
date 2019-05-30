@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a Prueba')
+@section('title', 'Listado de productos')
 
 @section('body-clase', 'product-page')
 
@@ -24,9 +24,9 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
-                                        <th>Nombre</th>
-                                        <th class="col-md-4">Descripción</th>
-                                        <th>Categoría</th>
+                                        <th class="col-md-2 text-center">Nombre</th>
+                                        <th class="col-md-4 text-center">Descripción</th>
+                                        <th class="text-center">Categoría</th>
                                         <th class="text-right">Precio</th>
                                         <th class="text-right">Opciones</th>
                                     </tr>
@@ -45,6 +45,9 @@
                                                 </button>
                                                 <a href="{{ asset('admin/products/'.$producto->id.'/edit') }}" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
                                                     <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="{{ asset('admin/products/'.$producto->id.'/images') }}" rel="tooltip" title="Imagenes del producto" class="btn btn-warning btn-simple btn-xs">
+                                                    <i class="material-icons">image</i>
                                                 </a>
                                                 <form method="POST" action="{{ asset('admin/products/'.$producto->id.'/delete') }}" style="display: inline-block;"> 
                                                     @csrf
