@@ -68,24 +68,26 @@
                     <h2 class="title">Nuestros productos</h2>
 
                     <div class="team">
-                        <div class="row">
+                        <div class="row" style="display: flex;flex-wrap: wrap;">
                             @foreach ($products as $product)
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="margin-bottom: 5em; display: flex;flex-direction: column;">
                                     <div class="team-player">
-    
-                                        <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}" class="img-raised img-circle">
-                                        <h4 class="title">{{ $product->name }} <br />
-                                            <small class="text-muted">{{ !empty($product->category->name) ? $product->category->name : 'General' }}</small>
-                                        </h4>
-                                        <p class="description">{{$product->description}}</p>
+                                        <a href="{{ url('products/'.$product->id) }}">
+                                            <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}" class="img-raised img-circle">
+                                            <h4 class="title">{{ $product->name }} <br />
+                                                <small class="text-muted">{{ !empty($product->category->name) ? $product->category->name : 'General' }}</small>
+                                            </h4>
+                                            <p class="description">{{$product->description}}</p>
+                                        </a>
                                       {{--   <a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
                                         <a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-instagram"></i></a>
                                         <a href="#" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-facebook-square"></i></a> --}}
                                     </div>
                                 </div>
-                            @endforeach
-                            
-                            
+                            @endforeach   
+                        </div>
+                        <div class="row">
+                            {{ $products->links() }}
                         </div>
                     </div>
 

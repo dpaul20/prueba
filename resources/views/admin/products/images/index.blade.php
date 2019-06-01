@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="section text-center">
                     <h2 class="title">Imagen del producto "{{ $product->name }}"</h2>
-                    <div class="row">
+                    <div class="row" >
                         <div class="col-sm-4">
                             <div class="card">          
                                 <div class="card-body" >
@@ -29,10 +29,10 @@
                     </div>
                     <hr>
 
-                    <div class="row">   
+                    <div class="row" style="display: flex;flex-wrap: wrap;">   
                         <div class="card-deck">
                             @foreach ($images as $image)
-                                <div class="col-sm-4" style="margin-bottom: 15px">
+                                <div class="col-sm-4" style="margin-bottom: 3em; display: flex;flex-direction: column;">
                                     <div class="card">
                                         <img class="card-img-top" src="{{ $image->url }}" alt="$product->name" width="239">
                                         <div class="card-body">

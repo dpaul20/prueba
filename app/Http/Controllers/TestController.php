@@ -9,7 +9,7 @@ class TestController extends Controller
 {
     public function index()
     {
-    	$products = Product::all();
+    	$products = Product::paginate(9);
     	//dd($products[100]->productImage());
     	return view('welcome')->with(compact('products'));
     }
