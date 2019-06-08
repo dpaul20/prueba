@@ -15,10 +15,13 @@ Route::get('/', 'TestController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 Route::get('products/{product}','ProductController@show'); //Ver
 
 Route::post('/cart', 'CartDetailController@store');
+Route::delete('/cart', 'CartDetailController@destroy');
+
+Route::post('/order', 'CartController@update');
 
 //Route::resource('admin/products', 'ProductController');
 Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(function () {

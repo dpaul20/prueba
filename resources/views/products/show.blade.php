@@ -67,7 +67,11 @@
 	</div>
 	@include('includes.footer')
 @endsection
-
+@if (session('notificacion'))
+    <div class="alert alert-success" role="alert">
+        {{ session('notificacion') }}
+    </div>
+@endif
 <!-- Modal Core -->
 <div class="modal fade" id="modalAddToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   	<div class="modal-dialog">

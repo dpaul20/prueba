@@ -51,6 +51,9 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ url('/home') }}">Dashboard</a>
+                            </li>
                             @if (auth()->user()->admin)
                                 <li>
                                     <a href="{{ asset('admin/products') }}">Gestionar Productos</a>

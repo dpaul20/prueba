@@ -42,12 +42,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
-    public function getCartIdAttribute()
+    public function getCartAttribute()
     {
-        $cart =$this->carts()->where('status', 'Active')->first();
+        $cart =$this->carts->where('status', 'Active')->first();
 
         if ($cart) {    
-            return $cart->id;
+            return $cart;
         }
         //else
         //dd(auth()->user());
@@ -56,6 +56,6 @@ class User extends Authenticatable
         $cart->user_id= auth()->user()->id;
         $cart->save();
         
-        return $cart->id;
+        return $cart;
     }
 }
