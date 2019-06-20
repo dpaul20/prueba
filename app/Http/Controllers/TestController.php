@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Category;
 use App\Product;
+use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     public function index()
     {
-    	$products = Product::paginate(9);
+    	$categories = Category::has('products')->get();
     	//dd($products[100]->productImage());
-    	return view('welcome')->with(compact('products'));
+    	return view('welcome')->with(compact('categories'));
     }
 }

@@ -40,9 +40,9 @@
                                             <td>{{ ($producto->category) ? $producto->category->name : 'General'}}</td>
                                             <td class="text-right">${{ $producto->price }}</td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Ver" class="btn btn-info btn-simple btn-xs">
+                                                <a href="{{ url('products/'.$producto->id) }}" rel="tooltip" title="Ver" class="btn btn-info btn-simple btn-xs" target="_blank">
                                                     <i class="material-icons">description</i>
-                                                </button>
+                                                </a>
                                                 <a href="{{ asset('admin/products/'.$producto->id.'/edit') }}" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
                                                     <i class="fa fa-edit"></i>
                                                 </a>

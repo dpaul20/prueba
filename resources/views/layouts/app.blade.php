@@ -58,6 +58,9 @@
                                 <li>
                                     <a href="{{ asset('admin/products') }}">Gestionar Productos</a>
                                 </li>
+                                <li>
+                                    <a href="{{ asset('admin/categories') }}">Gestionar Categorías</a>
+                                </li>
                             @endif
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

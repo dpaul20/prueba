@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create'); //formulario
+        $categories= Category::orderBy('name')->get();
+        return view('admin.products.create')->with(compact('categories')); //formulario
     }
 
     /**
@@ -67,6 +69,7 @@ class ProductController extends Controller
         $producto->price = $request->input('price');
         $producto->description = $request->input('description');
         $producto->long_descripction = $request->input('long_descripction');
+        $producto->category_id = $request->input('category_id');
         $producto->save(); //INSERT
         return redirect('admin/products');
         
@@ -91,9 +94,9 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-
+        $categories= Category::orderBy('name')->get();
         $producto= Product::find($product);
-        return view('admin.products.edit')->with(compact('producto')); 
+        return view('admin.products.edit')->with(compact('producto', 'categories')); 
 
     }
 
@@ -133,6 +136,7 @@ class ProductController extends Controller
         $producto->price = $request->input('price');
         $producto->description = $request->input('description');
         $producto->long_descripction = $request->input('long_descripction');
+        $producto->category_id = $request->input('category_id');
         $producto->save(); //UPDATE
         return redirect('admin/products');
     }

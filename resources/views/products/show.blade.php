@@ -16,7 +16,7 @@
                         </div>
                         <div class="name">
                             <h3 class="title">{{ $producto->name }}</h3>
-							<h6>{{ $producto->category->name }}</h6>
+							<h6>{{ $producto->category_name }}</h6>
                         </div>
                     </div>
                 </div>
