@@ -1,7 +1,49 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a Prueba')
+@section('title', 'Bienvenido a '.config('app.name'))
+@section('styles')
+<style type="text/css">
+    .tt-query {
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
 
+  .tt-hint {
+      color: #999
+  }
+
+  .tt-menu {    /* used to be tt-dropdown-menu in older versions */
+      width: 422px;
+      margin-top: 4px;
+      padding: 4px 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+      -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+      box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  }
+
+  .tt-suggestion {
+      padding: 3px 20px;
+      line-height: 24px;
+  }
+
+  .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+      color: #fff;
+      background-color: #0097cf;
+
+  }
+
+  .tt-suggestion p {
+      margin: 0;
+  }
+</style>
+@endsection
 @section('body-clase', 'landing-page')
 
 @section('content')
@@ -10,7 +52,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="title">Bienvenido a Pueba</h1>
+                    <h1 class="title">Bienvenido a {{ config('app.name') }}</h1>
                     <h4>Realiza tu pedido y te contactaremos para realizar la entrega.</h4>
                     <br />
                     <a href="#" class="btn btn-danger btn-raised btn-lg">
@@ -67,15 +109,15 @@
             <div class="section text-center">
                 <h2 class="title">Categorías</h2>
                 <div class="row">
-                    <dir class="col-md-4 col">
+                    <div class="col-md-4 col" >
                         <form class="form-inline" method="get" action="{{ url('/buscar') }}">
-                        <input type="text" name="buscar" placeholder="¿Qué producto buscas?" class="form-control">
-                        <button class="btn btn-primary btn-fab btn-fab-mini btn-round" type="submit">
-                            <i class="material-icons">search</i>
-                        </button>
-                    </form>
-                    </dir>
-                   
+                            <input id="buscar" type="text" name="buscar" placeholder="¿Qué producto buscas?" class="form-control" >
+                            <button class="btn btn-primary btn-fab btn-fab-mini btn-round" type="submit">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
                 
                 <div class="team">
@@ -142,6 +184,27 @@
 
     @include('includes.footer')
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript" src="{{ asset('/js/typeahead.bundle.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        // constructs the suggestion engine
+        var products = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: '{{ url('/search/json') }}'
+        });
+        $('#buscar').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        },{
+            name: 'products',
+            source: products
+        });
+    });
+</script>
 @endsection
 {{-- @if (Route::has('login'))
 <div class="top-right links">
