@@ -32,6 +32,6 @@ class NewOrder extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.new-order');
+        return $this->view('emails.new-order')->subject('Se ha realizado un nuevo pedido.');
     }
 }
