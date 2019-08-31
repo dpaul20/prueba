@@ -23,11 +23,20 @@
                 <div class="description text-center">
                     <p>{{ $producto->long_descripction }}</p>
                 </div>
-                <div class="text-center">
-                	<button class="btn btn-primary btn-round"  data-toggle="modal" data-target="#modalAddToCart">
-						<i class="material-icons">add_shopping_cart</i> Agregar a carrito
-					</button>
-                </div>
+                @if (auth()->check())
+                	<div class="text-center">
+	                	<button class="btn btn-primary btn-round"  data-toggle="modal" data-target="#modalAddToCart">
+							<i class="material-icons">add_shopping_cart</i> Agregar a carrito
+						</button>
+	                </div>
+	            @else
+	            	<div class="text-center">
+	                	<a heref="{{ url('/login?redirect_to='. url()->current()) }}" class="btn btn-primary btn-round"  data-toggle="modal" data-target="#modalAddToCart">
+							<i class="material-icons">add_shopping_cart</i> Agregar a carrito
+						</a>
+	                </div>
+                @endif
+                
 
 				
 				<div class="row">

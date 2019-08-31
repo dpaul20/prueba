@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class CartDetailController extends Controller
 {
+    function __construct($foo = null)
+    {
+        $this->middleware('auth');
+    }
     public function store(Request $request)
     {
     	$cartDetail = new CartDetail();
