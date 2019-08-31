@@ -24,6 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th>Imagen</th>
                                         <th class="col-md-2 text-center">Nombre</th>
                                         <th class="col-md-4 text-center">Descripción</th>
                                         <th class="text-right">Opciones</th>
@@ -33,6 +34,9 @@
                                     @foreach ($categories as $key=> $category)
                                         <tr>
                                             <td class="text-center">{{  ($key+1) }}</td>
+                                            <td>
+                                                <img src="{{ $category->featured_image_url }}" height="50">
+                                            </td>
                                             <td>{{ $category->name }}</td>
                                             <td>{{ $category->description }}</td>
                                             <td class="td-actions text-right">

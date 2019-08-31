@@ -24,7 +24,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="{{ asset('admin/categories') }}">
+                    <form method="POST" action="{{ asset('admin/categories') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-sm-4">
@@ -33,8 +33,12 @@
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                 </div>
                             </div>
+                            <div class="col-sm-4">
+                                <label class="control-label">Imagen</label>
+                                <input type="file"  name="image" >
+                            </div>
                         </div>
-
+                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <textarea class="form-control" placeholder="Descripción" rows="5" name="description">{{ old('description') }}</textarea>

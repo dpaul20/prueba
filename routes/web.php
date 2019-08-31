@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('products/{product}','ProductController@show'); //Ver
 Route::get('categories/{category}','CategoryController@show'); //Ver
+// Auth::get('/registro','RegisterController@showRegistrationForm'); //Ver
 
 Route::get('/{search}','SearchController@show'); //Ver
 Route::get('/search/json','SearchController@data'); //Ver

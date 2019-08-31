@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use File;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -42,13 +43,26 @@ class CategoryController extends Controller
          * registrar el category en la bd
          */
         //dd($request->all());
-        Category::create($request->all());
+        $category = Category::create($request->only('name', 'description'));
         // $category = new Category();
         // $category->name = $request->input('name');
         // $category->description = $request->input('description');
         // $category->save(); //INSERT
+
+        if ($request->hasFile('image')) {
+            //guardar la imagen
+            $file = $request->file('image');
+            $path= public_path(). '/images/categories';
+            $fileName= uniqid().$file->getClientOriginalName();
+            $moved=$file->move($path, $fileName);
+            //crear registro en la tabla product_images
+            if ($moved) {
+                $category->image=$fileName;
+                $category->save(); //INSERT
+            }
+        }
         return redirect('admin/categories');
-        
+
     }
 
     /**
@@ -85,9 +99,27 @@ class CategoryController extends Controller
     {
         //
         $this->validate($request, Category::$rules, Category::$message);
-         $category->update($request->all()); //UPDATE
-        return redirect('admin/categories');
-    }
+        $category->update($request->only('name', 'description')); //UPDATE
+
+        if ($request->hasFile('image')) {
+            //guardar la imagen
+            $file = $request->file('image');
+            $path= public_path(). '/images/categories';
+            $fileName= uniqid().$file->getClientOriginalName();
+            $moved=$file->move($path, $fileName);
+            //crear registro en la tabla product_images
+            if ($moved) {
+                $previusPath= $path.'/'.$category->image;
+                $category->image=$fileName;
+                $saved= $category->save(); //INSERT
+                if ($saved) {
+                    File::delete($previusPath);
+                }
+                
+            }
+        }
+         return redirect('admin/categories');
+     }
 
     /**
      * Remove the specified resource from storage.

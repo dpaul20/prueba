@@ -143,33 +143,28 @@
             <div class="section landing-section">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="text-center title">¿Alguna consulta?</h2>
+                        <h2 class="text-center title">¿Aún no te has registrado?</h2>
                         <h4 class="text-center description">Dejanos tus datos y estaremos en contacto contigo pronto.</h4>
-                        <form class="contact-form">
+                        <form class="contact-form" method="GET" action="{{ url('/register') }}">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Tu nombre</label>
-                                        <input type="email" class="form-control">
+                                        <input type="text" name="name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Tu Correo electrónico</label>
-                                        <input type="email" class="form-control">
+                                        <input type="email" name="email" class="form-control">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group label-floating">
-                                <label class="control-label">Tu mensaje</label>
-                                <textarea class="form-control" rows="4"></textarea>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-4 text-center">
                                     <button class="btn btn-primary btn-raised">
-                                        Enviar mensaje
+                                        Registrarse
                                     </button>
                                 </div>
                             </div>
