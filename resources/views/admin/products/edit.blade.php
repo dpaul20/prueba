@@ -39,6 +39,24 @@
                                     <input type="number" step="0.01" class="form-control" name="price" value="{{ old('price', $producto->price) }}">
                                 </div>
                             </div>
+                            <div class="col-sm-2">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Stock</label>
+                                    <input type="number" step="0.01" class="form-control" name="stock" value="{{ old('stock', $producto->stock) }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Cantidad mínima</label>
+                                    <input type="number" step="0.01" class="form-control" name="min_sale" value="{{ old('min_sale', $producto->min_sale) }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Tipo de paquete</label>
+                                    <input type="number" step="0.01" class="form-control" name="packaging" value="{{ old('packaging', $producto->packaging) }}">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">

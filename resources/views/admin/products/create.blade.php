@@ -39,8 +39,32 @@
                                     <input type="number" class="form-control" name="price" value="{{ old('price') }}">
                                 </div>
                             </div>
+                            <div class="col-sm-2">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Stock</label>
+                                    <input type="number" class="form-control" name="stock" value="{{ old('stock') }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Cantidad mínima</label>
+                                    <input type="number" class="form-control" name="min_sale" value="{{ old('min_sale') }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Tipo de paquete</label>
+                                    <input type="number" class="form-control" name="packaging" value="{{ old('packaging') }}">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
+                            <div class="col-sm-2">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Código</label>
+                                    <input type="text" class="form-control" name="code" value="{{ old('code') }}">
+                                </div>
+                            </div>
                             <div class="col-sm-4">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Categoría</label>
@@ -70,7 +94,12 @@
                         </div>
 
                         <div class="row">
-                            <input type="submit" class="btn btn-primary" value="Registrar">
+                            <div class="col-sm-2">
+                                <input type="submit" class="btn btn-primary" value="Registrar">
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="{{ asset('admin/products') }}" class="btn btn-primary">Cancelar</a>
+                            </div>
                         </div>
   
                     </form>
