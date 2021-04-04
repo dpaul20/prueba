@@ -68,7 +68,7 @@ class ProductController extends Controller
         $producto->name = $request->input('name');
         $producto->price = $request->input('price');
         $producto->description = $request->input('description');
-        $producto->long_descripction = $request->input('long_descripction');
+        $producto->long_description = $request->input('long_description');
         $producto->category_id = $request->input('category_id');
         $producto->save(); //INSERT
         return redirect('admin/products');
@@ -135,7 +135,7 @@ class ProductController extends Controller
         $producto->name = $request->input('name');
         $producto->price = $request->input('price');
         $producto->description = $request->input('description');
-        $producto->long_descripction = $request->input('long_descripction');
+        $producto->long_description = $request->input('long_description');
         $producto->category_id = $request->input('category_id');
         $producto->save(); //UPDATE
         return redirect('admin/products');
