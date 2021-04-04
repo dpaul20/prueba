@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="description text-center">
-                    <p>{{ $producto->long_descripction }}</p>
+                    <p>{{ $producto->long_description }}</p>
                 </div>
                 @if (auth()->check())
                 	<div class="text-center">

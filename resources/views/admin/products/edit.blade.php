@@ -83,7 +83,7 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <textarea class="form-control" placeholder="Descripción extensa del producto" rows="5" name="long_descripction">{{ old('long_descripction', $producto->long_descripction) }}</textarea>
+                                <textarea class="form-control" placeholder="Descripción extensa del producto" rows="5" name="long_description">{{ old('long_description', $producto->long_description) }}</textarea>
                             </div>
                         </div>
 

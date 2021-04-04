@@ -17,6 +17,9 @@
                     <div class="team">
                         <div class="row">
                             <div class="row text-right">
+                                <a href="{{ asset('admin/import') }}" class="btn btn-primary btn-round">Carga masiva</a>
+                            </div>
+                            <div class="row text-right">
                                 <a href="{{ asset('admin/products/create') }}" class="btn btn-primary btn-round">Nuevo producto</a>
                             </div>
                             

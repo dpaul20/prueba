@@ -38,6 +38,9 @@ Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(
 	Route::post('products/{product}/edit','ProductController@update'); //Actualizar
 	Route::post('products/{product}/delete','ProductController@destroy'); //Eliminar
 
+	Route::get('import', 'ImportController@index');
+	Route::post('import', 'ImportController@import');
+
 	Route::get('products/{product}/images','ImageController@index'); //listado
 	Route::post('products/{product}/images','ImageController@store'); //Registrar
 	Route::delete('products/{product}/images','ImageController@destroy'); //Eliminar
