@@ -67,7 +67,7 @@
 
         </div>
 
-        @include('includes.footer')
+        
     </div>
 @endsection
             {{-- @if (Route::has('login'))

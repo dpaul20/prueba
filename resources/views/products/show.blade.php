@@ -74,7 +74,7 @@
             </div>
         </div>
 	</div>
-	@include('includes.footer')
+	
 @endsection
 @if (session('notificacion'))
     <div class="alert alert-success" role="alert">
