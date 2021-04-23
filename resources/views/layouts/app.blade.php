@@ -6,12 +6,9 @@
 <body>
     <div class="gv-content d-grid gap-1">
         @include('layouts.includes.header')
-    @include('layouts.includes.navbar')
-
-    <div class="wrapper">
+        @include('layouts.includes.navbar')
         @yield('content')   
-    </div>
-    @include('layouts.includes.footer')
+        @include('layouts.includes.footer')
     </div>
     
     @include('layouts.includes.js')

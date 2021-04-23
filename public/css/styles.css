@@ -1,6 +1,62 @@
+body{
+    font-family: Roboto;
+}
+
 .logo {
     background-color: #FF8000;
     height: 52px;
+}
+
+.gv-content {
+    background-color: #C4C4C4;
+}
+
+.gv-toogler {
+    border: 0px;
+}
+
+.gv-toogler-color {
+    color: #FF8000;
+}
+
+.barraTitulo {
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-buscar {
+    margin: 15px;
+}
+
+.barraTitulo h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.azul {
+    background-color: #74A0E1;
+    color: #FFF;
+}
+
+.naranja {
+    background-color: #FF8000;
+    color: #FFF;
+}
+
+#buscador {
+    background-color: #FFF;
+}
+
+#buscar, #button-addon-buscar {
+    border-color: #FF8000;
+}
+
+#buscar::placeholder, #button-addon-buscar i {
+    color: #FF8000;
 }
 
 @media (min-width: 576px) {  }

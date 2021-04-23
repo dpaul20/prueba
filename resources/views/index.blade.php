@@ -1,139 +1,83 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a '.config('app.name'))
-@section('styles')
-<style type="text/css">
-    .tt-query {
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  }
+@section('title', 'Bienvenido a ' . config('app.name'))
 
-  .tt-hint {
-      color: #999
-  }
-
-  .tt-menu {    /* used to be tt-dropdown-menu in older versions */
-      width: 422px;
-      margin-top: 4px;
-      padding: 4px 0;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-      -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-      box-shadow: 0 5px 10px rgba(0,0,0,.2);
-  }
-
-  .tt-suggestion {
-      padding: 3px 20px;
-      line-height: 24px;
-  }
-
-  .tt-suggestion.tt-cursor,.tt-suggestion:hover {
-      color: #fff;
-      background-color: #0097cf;
-
-  }
-
-  .tt-suggestion p {
-      margin: 0;
-  }
-</style>
-@endsection
 @section('body-clase', 'landing-page')
 
 @section('content')
-<div class="wrapper">
-    <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1 class="title">Bienvenido a {{ config('app.name') }}</h1>
-                    <h4>Realiza tu pedido y te contactaremos para realizar la entrega.</h4>
-                    <br />
-                    <a href="#" class="btn btn-danger btn-raised btn-lg">
-                        <i class="fa fa-play"></i> ¿Cómo funciona?
-                    </a>
+    <div class="carouselOferta">
+        <div class="barraTitulo azul">
+            <h1>SOLO POR HOY</h1>
+        </div>
+        <div id="carouselIndex" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('/images/examples/bg3.jpeg') }}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('/images/examples/bg.jpg') }}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('/images/examples/bg2.jpeg') }}" class="d-block w-100" alt="...">
                 </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselIndex" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+    </div>
+
+    <div id="buscador">
+        <div class="barraTitulo naranja">
+            <h1>BUSCAR PRODUCTO</h1>
+        </div>
+        <form id="form-buscar" class="align-items-center" method="get" action="{{ url('/buscar') }}">
+            <div class="input-group mb-3">
+                <input id="buscar" type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar..."
+                    aria-describedby="button-addon-buscar">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon-buscar"><i class="bi bi-search"></i></button>
+            </div>
+        </form>
     </div>
 
     <div class="main main-raised">
         <div class="container">
-            <div class="section text-center section-landing">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h2 class="title">¿Por qué prueba test?</h2>
-                        <h5 class="description">Puedes revisar nuestra relación completa de productos, compra precios y realiza tus pedidos cuando quieras.</h5>
-                    </div>
-                </div>
-
-                <div class="features">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="info">
-                                <div class="icon icon-primary">
-                                    <i class="material-icons">chat</i>
-                                </div>
-                                <h4 class="info-title">Atendemos tus dudas</h4>
-                                <p>Atendemos rápidamente cualquier consulta que tengas via chat. No esta solo, sino que simepre estamos atentos a tus inquietudes.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info">
-                                <div class="icon icon-success">
-                                    <i class="material-icons">verified_user</i>
-                                </div>
-                                <h4 class="info-title">Pagos Seguros</h4>
-                                <p>Todos nuestros pagos son realmente seguros y son confirmados.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info">
-                                <div class="icon icon-danger">
-                                    <i class="material-icons">fingerprint</i>
-                                </div>
-                                <h4 class="info-title">Información privada</h4>
-                                <p>Los pedidos que realices solo los conoceras tú a través de tu panel de usuario. NAdie más tiene acceso a tú información.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="section text-center">
                 <h2 class="title">Categorías</h2>
                 <div class="row">
-                    <div class="col-md-4 col" >
-                        <form class="form-inline" method="get" action="{{ url('/buscar') }}">
-                            <input id="buscar" type="text" name="buscar" placeholder="¿Qué producto buscas?" class="form-control" >
-                            <button class="btn btn-primary btn-fab btn-fab-mini btn-round" type="submit">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </form>
+                    <div class="col-md-4 col">
+
                     </div>
 
                 </div>
-                
+
                 <div class="team">
                     <div class="row" style="display: flex;flex-wrap: wrap;">
                         @foreach ($categories as $category)
-                        <div class="col-md-4" style="margin-bottom: 5em; display: flex;flex-direction: column;">
-                            <div class="team-player">
-                                <a href="{{ url('categories/'.$category->id) }}">
-                                    <img src="{{ $category->featured_image_url }}" alt="{{ $category->name }}" class="img-raised img-circle">
-                                    <h4 class="title">{{ $category->name }} <br />
-                                    </h4>
-                                    <p class="description">{{ $category->description }}</p>
-                                </a>
+                            <div class="col-md-4" style="margin-bottom: 5em; display: flex;flex-direction: column;">
+                                <div class="team-player">
+                                    <a href="{{ url('categories/' . $category->id) }}">
+                                        <img src="{{ $category->featured_image_url }}" alt="{{ $category->name }}"
+                                            class="img-raised img-circle">
+                                        <h4 class="title">{{ $category->name }} <br />
+                                        </h4>
+                                        <p class="description">{{ $category->description }}</p>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        @endforeach   
+                        @endforeach
                     </div>
                 </div>
 
@@ -177,28 +121,29 @@
 
     </div>
 
-</div>
+
 @endsection
 @section('scripts')
-<script type="text/javascript" src="{{ asset('/js/typeahead.bundle.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        // constructs the suggestion engine
-        var products = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: '{{ url('/search/json') }}'
+    <script type="text/javascript" src="{{ asset('/js/typeahead.bundle.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            // constructs the suggestion engine
+            var products = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: '{{ url('/search/json') }}'
+            });
+            $('#buscar').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            }, {
+                name: 'products',
+                source: products
+            });
         });
-        $('#buscar').typeahead({
-            hint: true,
-            highlight: true,
-            minLength: 1
-        },{
-            name: 'products',
-            source: products
-        });
-    });
-</script>
+
+    </script>
 @endsection
 {{-- @if (Route::has('login'))
 <div class="top-right links">
@@ -213,4 +158,3 @@
     @endauth
 </div>
 @endif --}}
-
