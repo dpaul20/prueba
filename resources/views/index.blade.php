@@ -38,23 +38,46 @@
         </div>
     </div>
 
-    <div id="buscador">
+    <div id="buscador" class="blanco">
         <div class="barraTitulo naranja">
             <h1>BUSCAR PRODUCTO</h1>
         </div>
         <form id="form-buscar" class="align-items-center" method="get" action="{{ url('/buscar') }}">
-            <div class="input-group mb-3">
+            <div class="input-group">
                 <input id="buscar" type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar..."
                     aria-describedby="button-addon-buscar">
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon-buscar"><i class="bi bi-search"></i></button>
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon-buscar"><i
+                        class="bi bi-search"></i></button>
             </div>
         </form>
     </div>
 
-    <div class="main main-raised">
-        <div class="container">
+    <div id="contactanos" class="container-fluid blanco">
+        <h1 class="contactanos mt-1">CONTÁCTANOS</h1>
+        <form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control fondo-gris" id="floatingNombre" placeholder="...">
+                <label class="texto-input" for="floatingNombre">Nombre</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control fondo-gris" id="floatingCorreo" placeholder="...">
+                <label class="texto-input" for="floatingCorreo">Correo</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control fondo-gris" id="floatingCelular" placeholder="...">
+                <label class="texto-input" for="floatingCelular">Celular</label>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control fondo-gris" placeholder="Dejé su comentario..." id="floatingComentario" style="height: 100px"></textarea>
+                <label class="texto-input" for="floatingComentario">Dejé su comentario...</label>
+            </div>
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary naranja border-0">Enviar consulta</button>
+            </div>
+        </form>
+    </div>
 
-            <div class="section text-center">
+    {{-- <div class="section text-center">
                 <h2 class="title">Categorías</h2>
                 <div class="row">
                     <div class="col-md-4 col">
@@ -81,10 +104,10 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
 
 
-            <div class="section landing-section">
+    {{-- <div class="section landing-section">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h2 class="text-center title">¿Aún no te has registrado?</h2>
@@ -116,34 +139,15 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
+            </div> --}}
 
-    </div>
+
 
 
 @endsection
 @section('scripts')
     <script type="text/javascript" src="{{ asset('/js/typeahead.bundle.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            // constructs the suggestion engine
-            var products = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                prefetch: '{{ url('/search/json') }}'
-            });
-            $('#buscar').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            }, {
-                name: 'products',
-                source: products
-            });
-        });
-
-    </script>
+    <script type="text/javascript" src="{{ asset('/js/buscador.js') }}"></script>
 @endsection
 {{-- @if (Route::has('login'))
 <div class="top-right links">

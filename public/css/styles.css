@@ -47,7 +47,7 @@ body{
     color: #FFF;
 }
 
-#buscador {
+.blanco {
     background-color: #FFF;
 }
 
@@ -58,6 +58,51 @@ body{
 #buscar::placeholder, #button-addon-buscar i {
     color: #FF8000;
 }
+
+.twitter-typeahead {
+    width: 100%;
+    max-width: 87%;
+}
+
+.contactanos {
+    text-align: center;
+    color: #74A0E1;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+}
+
+.texto-input {
+    color: #707070;
+}
+
+#siteMap {
+    background-color: #74A0E1;
+}
+
+.contacto, .site-map {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#copyright {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gutviel {
+    font-size: 10px;
+    color: #FFF;
+}
+
+.made {
+    font-size: 9px;
+    color: #707070;
+}
+
 
 @media (min-width: 576px) {  }
 
